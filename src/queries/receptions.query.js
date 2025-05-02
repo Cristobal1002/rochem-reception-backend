@@ -75,3 +75,15 @@ export const FIND_ORDER_BY_NUMBER = `
         ORDER BY 1 DESC;
 `
 
+export const GET_KITS_BY_ORDER = `
+    SELECT
+        oc.[PONUMBER] AS NumeroOrdenCompra,
+        oc.[ITEMNMBR] AS NumeroArticulo,
+        kits.[ITEMNMBR] AS Componente,
+        kits.[ITEMDESC] AS DescripcionComponente
+    FROM dbo.POP10110 AS oc
+    LEFT JOIN dbo.ID_COMPONENT_MASTER AS kits
+        ON oc.ITEMNMBR = kits.ITMMSTRNMBR
+    WHERE oc.[PONUMBER] = @PONumber
+      AND kits.ITEMNMBR IS NOT NULL
+`;
