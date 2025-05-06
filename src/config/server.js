@@ -33,8 +33,8 @@ const startServer = async () => {
         await getConnection();
         console.log('✅ Conectado a la base de datos');
 
-        app.listen(port, () => {
-            console.log(`🚀 Servidor corriendo en puerto ${port}`);
+        app.listen(port, '0.0.0.0', () => {
+            console.log(`🚀 Servidor corriendo en puerto ${port} y accesible en red local`);
         });
     } catch (err) {
         console.error('❌ No se pudo conectar a la base de datos:', err);
